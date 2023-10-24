@@ -2,6 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType
+{
+    OneHand, 
+    TwoHand, 
+    Archer
+}
+
+public enum PatrolType
+{
+    Linear, Random, Loop
+}
+
 public class EnemyManager : MonoBehaviour
 {
     public Transform[] spawnPoints;
@@ -15,6 +27,7 @@ public class EnemyManager : MonoBehaviour
     {
         //SpawnEnemies();
         SpawnAtRandom();
+        StartCoroutine(SpawnEnemiesWithDelay());
     }
 
     private void Update()
@@ -27,6 +40,19 @@ public class EnemyManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
             KillSpecificEnemies(killCondition);
+    }
+
+    /// <summary>
+    /// Spawns an ememy every random amount of seconds
+    /// </summary>
+    IEnumerator SpawnEnemiesWithDelay()
+    {
+        for(int i = 0; i < spawnPoints.Length; i++)
+        {
+            int rnd = Random.Range(0, enemyTypes.Length);
+            GameObject enemy = Instantiate(enemyTypes[rnd], spawnPoints[i].position, spawnPoints[i].rotation);
+            yield return new WaitForSeconds(Random.Range(1, 3));
+        }
     }
 
     /// <summary>
@@ -101,6 +127,16 @@ public class EnemyManager : MonoBehaviour
                 KillEnemy(enemies[i]);
         }
     }
+
+    /// <summary>
+    /// Get a random spawn point
+    /// </summary>
+    /// <returns>A random spawn point</returns>
+    public Transform GetRandomSpawnPoint()
+    {
+        return spawnPoints[Random.Range(0, spawnPoints.Length)];
+    }
+
 
     void Examples()
     {
