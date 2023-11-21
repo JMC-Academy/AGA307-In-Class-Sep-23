@@ -409,6 +409,7 @@ GameObject:
   - component: {fileID: 4702089107623999456}
   - component: {fileID: 1533741496273268832}
   - component: {fileID: 3594228654170458871}
+  - component: {fileID: 2450456765990090311}
   m_Layer: 0
   m_Name: TriggerZone
   m_TagString: Untagged
@@ -508,3 +509,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door1: {fileID: 1925896781809694}
   door2: {fileID: 1161486344028972}
+--- !u!54 &2450456765990090311
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390522892096622286}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
